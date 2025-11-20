@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: ''
+                git branch: 'master', url: 'https://github.com/JarkkoKarki/OTP2-JenkinsSonarqube.git'
             }
         }
 
