@@ -29,6 +29,22 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+        stage('Code Coverage') {
+            steps {
+                bat 'mvn jacoco:report'
+            }
+        }
+        stage('Publish Test Results') {
+            steps {
+                junit '**/target/surefire-reports/*.xml'
+            }
+        }
+
         stage('SonarQube Analysis') {
                     steps {
                         withSonarQubeEnv('SonarQubeServer') {
